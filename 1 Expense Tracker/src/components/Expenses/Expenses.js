@@ -1,6 +1,6 @@
 import React from "react";
 import ExpenseItem from "./ExpenseItem";
-import Card from "./Card";
+import Card from "../UI/Card"; // Go up 1 level for Card.js
 import "./Expenses.css";
 
 function Expenses(props) {
