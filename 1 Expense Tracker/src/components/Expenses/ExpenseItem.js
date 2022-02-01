@@ -11,13 +11,14 @@ const ExpenseItem = (props) => {
                 <h2>{props.title}</h2>
                 <div className="expense-item__price">${props.amount}</div>
             </div>
+            <button onClick={ () => {console.log('Clicked')}}>Change Title</button>
         </Card>
     );
 }
 
 export default ExpenseItem;
 
-/* Use className instead of class */  
+/* Use className instead of class */ 
 
 /* 
   Props allows you to make the components reusable and it allows you to pass data from another componnet to this component
