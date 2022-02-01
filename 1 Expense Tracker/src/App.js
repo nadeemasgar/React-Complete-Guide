@@ -63,3 +63,7 @@ export default App;
   Parameter is used to access the values defined in the place where we use our custom components.
   We will get only one parameter in every component. One parameter is the object which holds all the received attribute as properties
 */
+
+*/
+  App file se data move kiya ExpenseItem me___ and ExpenseItem se move kiya ExpenseDate me
+ */
