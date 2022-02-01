@@ -1,4 +1,4 @@
-import ExpenseItem from "./components/ExpenseItem";
+import Expenses from "./components/Expenses";
 
 function App() {
   /* Component */
@@ -24,29 +24,9 @@ function App() {
     },
   ];
   return (
-    /* Desired end state - div, h2, p */
     <div>
       <h2>Let's get started!</h2>
-      <ExpenseItem
-        title={expenses[0].title}
-        amount={expenses[0].amount}
-        date={expenses[0].date}
-      />
-      <ExpenseItem
-        title={expenses[1].title}
-        amount={expenses[1].amount}
-        date={expenses[1].date}
-      />
-      <ExpenseItem
-        title={expenses[2].title}
-        amount={expenses[2].amount}
-        date={expenses[2].date}
-      />
-      <ExpenseItem
-        title={expenses[3].title}
-        amount={expenses[3].amount}
-        date={expenses[3].date}
-      />
+      <Expenses items={expenses} />
     </div>
   );
 }
@@ -63,7 +43,3 @@ export default App;
   Parameter is used to access the values defined in the place where we use our custom components.
   We will get only one parameter in every component. One parameter is the object which holds all the received attribute as properties
 */
-
-*/
-  App file se data move kiya ExpenseItem me___ and ExpenseItem se move kiya ExpenseDate me
- */
