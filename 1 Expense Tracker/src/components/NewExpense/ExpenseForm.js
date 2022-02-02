@@ -4,7 +4,7 @@ import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
   const [enteredTitle, setEnteredTitle] = useState("");
-  const [eneteredAmount, setEnteredAmount] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
   const titleChangeHandler = (event) => {
@@ -19,8 +19,20 @@ const ExpenseForm = () => {
     setEnteredDate(event.target.value);
   };
 
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+
+    console.log(expenseData);
+  };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
@@ -53,3 +65,5 @@ const ExpenseForm = () => {
 };
 
 export default ExpenseForm;
+
+/* To prevent the default of the request. So request will not be send to server. */
