@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card"; // Go up 1 level for Card.js
 import ExpensesFilter from "./ExpensesFilter";
 import "./Expenses.css";
 
 const Expenses = (props) => {
+  const [filteredYear, setFilteredYear] = useState("2020");
+
   const filterChangeHandler = (selectedYear) => {
-    console.log("Expenses.js");
-    console.log(selectedYear);
+    setFilteredYear(selectedYear);
   };
 
   return (
