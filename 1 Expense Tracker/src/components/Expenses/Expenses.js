@@ -20,13 +20,15 @@ const Expenses = (props) => {
         />
 
         {props.items.map((expense) => {
-          return <ExpenseItem
-            title={expense.tilte}
-            amount={expense.amount}
-            date={expense.date}
-          />;
+          return (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            />
+          );
         })}
-
       </Card>
     </div>
   );
