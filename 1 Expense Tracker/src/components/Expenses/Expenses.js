@@ -23,16 +23,20 @@ const Expenses = (props) => {
           onchageFilter={filterChangeHandler}
         />
 
-        {filteredExpenses.map((expense) => {
-          return (
-            <ExpenseItem
-              key={expense.id}
-              title={expense.title}
-              amount={expense.amount}
-              date={expense.date}
-            />
-          );
-        })}
+        {filteredExpenses.length === 0 ? (
+          <p>No Expense Found.</p>
+        ) : (
+          filteredExpenses.map((expense) => {
+            return (
+              <ExpenseItem
+                key={expense.id}
+                title={expense.title}
+                amount={expense.amount}
+                date={expense.date}
+              />
+            );
+          })
+        )}
       </Card>
     </div>
   );
