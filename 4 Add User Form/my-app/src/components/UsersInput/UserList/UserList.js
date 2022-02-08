@@ -1,12 +1,10 @@
-import React from "react";
-import Card from "../../UI/Card"; 
+import React, { useEffect } from "react";
+import Card from "../../UI/Card";
 
 import "./UserList.css";
 
 const UserList = (props) => {
- 
-  console.log(props);
-  return (
+  useEffect(()=> {
     <div>
       {props.usersData.map((user) => {
         console.log(user);
@@ -17,7 +15,9 @@ const UserList = (props) => {
         );
       })}
     </div>
-  );
+  }, [props])
+  console.log(props);
+  return <div></div>
 };
 
 export default UserList;

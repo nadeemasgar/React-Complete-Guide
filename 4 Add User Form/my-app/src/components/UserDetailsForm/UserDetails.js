@@ -16,13 +16,16 @@ const UserDetails = (props) => {
 
   const onSaveUserData = (userObj) => {
 
+
+    usersData.push(userObj);
+
     // let newValue = value;
 
     // newValue.push(userObj);
 
     // setValue(newValue);
 
-    console.log(usersData);
+    // console.log(usersData);
   };
 
   return (
@@ -30,7 +33,7 @@ const UserDetails = (props) => {
       <div className="new-expense">
         <UserForm onSaveUserData={onSaveUserData} />
       </div>
-      <UserList usersData={value}/>
+      <UserList usersData={usersData}/>
     </div>
   );
 };
