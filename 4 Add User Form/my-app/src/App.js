@@ -1,12 +1,11 @@
-import React from 'react';
-import Card from "../src/components/UI/Card"
+import React from "react";
 
-import './App.css';
+import UserDetails from "./components/UserDetailsForm/UserDetails";
+
+import "./App.css";
 
 function App() {
-  return (
-    <Card></Card>
-  );
+  return <UserDetails />;
 }
 
 export default App;
