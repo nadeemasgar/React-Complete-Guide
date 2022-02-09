@@ -1,10 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import UserForm from "../UsersInput/Form/UserForm";
 import UserList from "../UsersInput/UserList/UserList";
 
 import "./UserDetails.css";
 const UserDetails = (props) => {
-  
   const usersData = [
     {
       username: "Tokopedia",
@@ -12,20 +11,14 @@ const UserDetails = (props) => {
     },
   ];
 
-  const [value, setValue] = useState(usersData)
+  const [value, setValue] = useState(usersData);
 
   const onSaveUserData = (userObj) => {
+    setValue((prevValue) => {
+      return [userObj, ...prevValue];
+    });
 
-
-    usersData.push(userObj);
-
-    // let newValue = value;
-
-    // newValue.push(userObj);
-
-    // setValue(newValue);
-
-    // console.log(usersData);
+    console.log(value);
   };
 
   return (
@@ -33,7 +26,7 @@ const UserDetails = (props) => {
       <div className="new-expense">
         <UserForm onSaveUserData={onSaveUserData} />
       </div>
-      <UserList usersData={usersData}/>
+      <UserList usersData={value} />
     </div>
   );
 };

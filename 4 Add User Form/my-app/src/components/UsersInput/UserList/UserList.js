@@ -1,23 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card from "../../UI/Card";
 
 import "./UserList.css";
 
 const UserList = (props) => {
-  useEffect(()=> {
+  console.log(props);
+  return (
     <div>
       {props.usersData.map((user) => {
-        console.log(user);
         return (
-          <Card>
-            <div className="userDetails">{user.username}</div>
+          <Card key={Math.random()}>
+            <div className="userDetails">{`${user.username} - ${user.age}`}</div>
           </Card>
         );
       })}
     </div>
-  }, [props])
-  console.log(props);
-  return <div></div>
+  );
 };
 
 export default UserList;

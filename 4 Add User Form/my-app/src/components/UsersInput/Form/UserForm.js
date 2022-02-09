@@ -9,23 +9,50 @@ const UserForm = (props) => {
 
   const usernameChangeHandler = (event) => {
     // console.log(event.target.value);
+
     setUserName(event.target.value);
   };
 
   const ageChangeHandler = (event) => {
     // console.log(event.target.value);
     setUserAge(event.target.value);
-  }
+  };
+
+  const validation = (username, age) => {
+    let name_regex = new RegExp("^[a-zA-Z]+$");
+
+    let isValid = true;
+
+    let isValidName = name_regex.test(username);
+    if (username == "null" || username == "" || !isValidName) {
+      alert("Please enter valid username");
+      isValid = isValid && false;
+    }
+
+    let regex_numbers = /^[0-9]+$/;
+    let isValidNumber = regex_numbers.test(age);
+    if (age == "null" || age == "" || !isValidNumber) {
+      alert("Please enter valid age");
+      isValid = isValid && false;
+    }
+
+    return isValid;
+  };
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    const userObj = {
-      username: enteredUsername,
-      age: enteredAge
-    }
 
-    // console.log(userObj);
-    props.onSaveUserData(userObj);
+    const isValid = validation(enteredUsername, enteredAge);
+
+    if (isValid) {
+      const userObj = {
+        username: enteredUsername,
+        age: enteredAge,
+      };
+
+      // console.log(userObj);
+      props.onSaveUserData(userObj);
+    }
   };
 
   return (
