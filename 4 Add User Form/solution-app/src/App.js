@@ -15,11 +15,11 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       <AddUser onAddUser={addUserHandler} />{" "}
       {/* passing a function as props for lifting the state up */}
       <UserList users={usersList} />
-    </div>
+    </>
   );
 }
 
