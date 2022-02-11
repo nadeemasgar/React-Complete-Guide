@@ -11,32 +11,18 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
-  setFormIsValid(
-    enteredEmail.includes("@") && enteredPassword.trim().length > 6
-  );
-
-// Why many re-renders doesn't show when we update variables on every key strokes?? Like in prev case in whic u have made form
-
-  // useEffect(() => {
-  //   setFormIsValid(
-  //     enteredEmail.includes("@") && enteredPassword.trim().length > 6
-  //   );
-  // }, [enteredEmail, enteredPassword]);
+  useEffect(() => {
+    setFormIsValid(
+      enteredEmail.includes("@") && enteredPassword.trim().length > 6
+    );
+  }, [enteredEmail, enteredPassword]);
 
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
-
-    // setFormIsValid(
-    //   event.target.value.includes("@") && enteredPassword.trim().length > 6
-    // );
   };
 
   const passwordChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
-
-    // setFormIsValid(
-    //   event.target.value.trim().length > 6 && enteredEmail.includes("@")
-    // );
   };
 
   const validateEmailHandler = () => {
