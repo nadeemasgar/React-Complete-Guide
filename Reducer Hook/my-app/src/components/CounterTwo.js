@@ -44,3 +44,5 @@ function CounterTwo() {
 }
 
 export default CounterTwo
+
+/* By making action as object, we can use additional data in reducer function */
