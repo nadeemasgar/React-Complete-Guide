@@ -24,6 +24,7 @@ function CounterOne() {
     <div>
         <div>Count -  {count}</div> {/* Step 4 */}
         <button onClick={() => dispatch('increment')}>Increment</button>  {/* Step 5 */}
+        {/* We use dipatch method to dispatch the appropriate action based on what button the user clicks */}
         <button onClick={() => dispatch('decrement')}>Decrement</button> 
         <button onClick={() => dispatch('reset')}>Reset</button>
     </div>
