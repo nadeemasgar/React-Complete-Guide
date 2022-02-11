@@ -67,3 +67,8 @@ function CounterTwo() {
 export default CounterTwo;
 
 /* By making action as object, we can use additional data in reducer function */
+/* We can make both state and action as object */
+/* By using action as object, we can pass additional data to the reducer function */
+/* By using state as object, we are able to keep track of multiple state variables */
+/* This approach of maintaining multiple variables in a single state object is suited when dealing with global state */
+/* Right now, we are dealing with local state. And for this, we have another way to keep track of multiple variables */
