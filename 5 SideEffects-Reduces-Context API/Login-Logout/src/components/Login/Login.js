@@ -14,6 +14,9 @@ const Login = (props) => {
   setFormIsValid(
     enteredEmail.includes("@") && enteredPassword.trim().length > 6
   );
+
+// Why many re-renders doesn't show when we update variables on every key strokes?? Like in prev case in whic u have made form
+
   // useEffect(() => {
   //   setFormIsValid(
   //     enteredEmail.includes("@") && enteredPassword.trim().length > 6
