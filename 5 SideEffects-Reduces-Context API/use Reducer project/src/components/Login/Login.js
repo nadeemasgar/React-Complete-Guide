@@ -53,19 +53,21 @@ const Login = (props) => {
     };
   }, []);
 
-  useEffect(() => { // useEffect only run when state updates
+  const { isValid: emailIsValid } = emailState; // Object destructuring with alias assignment
+  const { isValid: passwordIsValid } = passwordState;
+
+  useEffect(() => {
+    // useEffect only run when state updates
     const identifier = setTimeout(() => {
-      console.log('Checking form validity!');
-      setFormIsValid(
-        emailState.isValid && passwordState.isValid
-      );
+      console.log("Checking form validity!");
+      setFormIsValid(emailIsValid && passwordIsValid);
     }, 500);
 
     return () => {
-      console.log('CLEANUP');
+      console.log("CLEANUP");
       clearTimeout(identifier);
     };
-  }, [emailState, passwordState]);
+  }, [emailIsValid, passwordIsValid]);
 
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: "USER_INPUT", val: event.target.value });
@@ -89,7 +91,7 @@ const Login = (props) => {
   };
 
   const validatePasswordHandler = () => {
-    dispatchPassword({ type: "INPUT_BLUR"})
+    dispatchPassword({ type: "INPUT_BLUR" });
   };
 
   const submitHandler = (event) => {
