@@ -5,11 +5,12 @@ import MealItem from "./MealItem/MealItem";
 import classes from "./AvailableMeals.module.css";
 
 const AvailableMeals = () => {
-  const [meals, setMeals] = useState([]);
+  const [meals, setMeals] = useState([]); // props & state are 2 criteria of rerendering
 
-  // let meals = [];
+  // let meals = [1, 2, 3];
 
   useEffect(() => {
+    // page manipulation // side-effects // useLayout
     const fetchMeals = async () => {
       const response = await fetch(
         "https://react-app-1cfa3-default-rtdb.asia-southeast1.firebasedatabase.app/meals.json"
