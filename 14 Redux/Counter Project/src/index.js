@@ -8,6 +8,7 @@ import store from "./store/index";
 
 ReactDOM.render(
   <Provider store={store}>
+    {/* wrapping App with Provider and passing store as props */}
     <App />
   </Provider>,
   document.getElementById("root")
