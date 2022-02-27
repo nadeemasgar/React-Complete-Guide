@@ -1,4 +1,4 @@
-/*
+
 import { useSelector, useDispatch } from "react-redux";
 
 import classes from "./Counter.module.css";
@@ -31,8 +31,9 @@ const Counter = () => {
 };
 
 export default Counter;
-*/
 
+
+/* 
 import { Component } from "react";
 import { connect } from "react-redux";
 
@@ -78,3 +79,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+ */
