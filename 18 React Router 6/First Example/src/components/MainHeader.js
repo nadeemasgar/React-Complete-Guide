@@ -1,6 +1,6 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
-import classes from './MainHeader.module.css';
+import classes from "./MainHeader.module.css";
 
 const MainHeader = () => {
   return (
@@ -8,12 +8,18 @@ const MainHeader = () => {
       <nav>
         <ul>
           <li>
-            <NavLink activeClassName={classes.active} to='/welcome'>
+            <NavLink
+              className={(navData) => (navData.isActive ? classes.active : "")}
+              to="/welcome"
+            >
               Welcome
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName={classes.active} to='/products'>
+            <NavLink
+              className={(navData) => (navData.isActive ? classes.active : "")}
+              to="/products"
+            >
               Products
             </NavLink>
           </li>
@@ -24,3 +30,5 @@ const MainHeader = () => {
 };
 
 export default MainHeader;
+
+// className takes a function in v-6 and we have to check explicitly whether component is active or not
