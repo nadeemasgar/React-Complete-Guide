@@ -13,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate replace to="/welcome" />} />
           <Route path="/welcome/*" element={<Welcome />}>
+            {/* Defining Nested Routes */}
             <Route path="new-user" element={<p>Welcome, new user!</p>}></Route>
           </Route>
           <Route path="/products" element={<Products />} />
@@ -31,3 +32,4 @@ export default App;
    then we would have to add the replace prop to Navigate as well.
 */
 
+/*  You can also go for the Outlet approach to display all your routes defined in one central place, */

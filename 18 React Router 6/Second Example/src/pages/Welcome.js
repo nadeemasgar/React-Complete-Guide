@@ -1,12 +1,11 @@
-import { Routes, Route } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Welcome = () => {
   return (
     <section>
       <h1>The Welcome Page</h1>
-      <Routes>
-        <Route path="new-user" element={<p>Welcome, new user!</p>} />
-      </Routes>
+      <Link to="new-user">New User</Link>
+      <Outlet />
     </section>
   );
 };
@@ -29,4 +28,9 @@ export default Welcome;
           <Link className="btn--flat" to={`${match.url}/comments`}>Load Comments</Link>
           <Link  to={`${match.path}/comments`}><Comments /></Link>
   So, full path not needed in v-6. Instead use relative path
+*/
+
+/* 
+  Outlet component is used to define where the Nested route should be displayed. 
+  It is a placeholder to tell React Router where nested route content should be inserted. 
 */
