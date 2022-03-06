@@ -42,3 +42,10 @@ function App() {
 }
 
 export default App;
+
+
+/* 
+URL- https://react-app-1cfa3.web.app/quotes
+
+To disable: firebase hosting:disable
+ */
