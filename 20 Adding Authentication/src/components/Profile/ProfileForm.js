@@ -33,7 +33,7 @@ const ProfileForm = () => {
       }
     ).then((res) => {
       // Assumption: Always succeeds!
-s
+
       history.replace("/");
     });
   };
