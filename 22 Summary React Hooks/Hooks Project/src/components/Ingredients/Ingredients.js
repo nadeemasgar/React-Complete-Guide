@@ -8,20 +8,26 @@ const Ingredients = () => {
   const [userIngredients, setUserIngredients] = useState([]);
 
   useEffect(() => {
-    fetch('https://react-app-1cfa3-default-rtdb.asia-southeast1.firebasedatabase.app/ingredients.json')
-      .then(response => response.json())
-      .then(responseData => {
+    fetch(
+      "https://react-app-1cfa3-default-rtdb.asia-southeast1.firebasedatabase.app/ingredients.json"
+    )
+      .then((response) => response.json())
+      .then((responseData) => {
         const loadedIngredients = [];
         for (const key in responseData) {
           loadedIngredients.push({
             id: key,
             title: responseData[key].title,
-            amount: responseData[key].amount
+            amount: responseData[key].amount,
           });
         }
         setUserIngredients(loadedIngredients);
       });
   }, []);
+
+  useEffect(() => {
+    console.log("RENDERING INGREDIENTS", userIngredients);
+  }, [userIngredients]);
 
   const addIngredientHandler = (ingredient) => {
     fetch(
