@@ -35,12 +35,18 @@ const Ingredients = () => {
       });
   };
 
-  const removeIngredientHandler = (id) => {
-    const newIngredient = userIngredients.filter((obj) => {
-      return obj.id !== id;
+  const removeIngredientHandler = (ingredientId) => {
+    fetch(
+      `https://react-app-1cfa3-default-rtdb.asia-southeast1.firebasedatabase.app/ingredients/${ingredientId}.json`,
+      {
+        method: "DELETE",
+      }
+    ).then((response) => {
+      const newIngredient = userIngredients.filter((obj) => {
+        return obj.id !== ingredientId;
+      });
+      setUserIngredients(newIngredient);
     });
-
-    setUserIngredients(newIngredient);
   };
 
   return (
