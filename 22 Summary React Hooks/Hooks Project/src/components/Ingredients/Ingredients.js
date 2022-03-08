@@ -14,13 +14,20 @@ const Ingredients = () => {
     ]);
   };
 
+  const removeIngredientHandler = (event, id) => {
+    console.log(event, id);
+  };
+
   return (
     <div className="App">
       <IngredientForm onAddIngredient={addIngredientHandler} />
 
       <section>
         <Search />
-        <IngredientList ingredients={userIngredients} onRemoveItem={() => {}} />
+        <IngredientList
+          ingredients={userIngredients}
+          onRemoveItem={removeIngredientHandler}
+        />
       </section>
     </div>
   );
