@@ -14,8 +14,12 @@ const Ingredients = () => {
     ]);
   };
 
-  const removeIngredientHandler = (event, id) => {
-    console.log(event, id);
+  const removeIngredientHandler = (id) => {
+    const newIngredient = userIngredients.filter((obj) => {
+      return obj.id !== id;
+    });
+
+    setUserIngredients(newIngredient);
   };
 
   return (
