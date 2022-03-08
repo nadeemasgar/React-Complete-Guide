@@ -1,63 +1,80 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useReducer, useState, useEffect, useCallback } from 'react';
 
-import IngredientForm from "./IngredientForm";
-import IngredientList from "./IngredientList";
-import ErrorModal from "../UI/ErrorModal";
-import Search from "./Search";
+import IngredientForm from './IngredientForm';
+import IngredientList from './IngredientList';
+import ErrorModal from '../UI/ErrorModal';
+import Search from './Search';
+
+const ingredientReducer = (currentIngredients, action) => {
+  switch (action.type) {
+    case 'SET':
+      return action.ingredients;
+    case 'ADD':
+      return [...currentIngredients, action.ingredient];
+    case 'DELETE':
+      return currentIngredients.filter(ing => ing.id !== action.id);
+    default:
+      throw new Error('Should not get there!');
+  }
+};
 
 const Ingredients = () => {
-  const [userIngredients, setUserIngredients] = useState([]);
+  const [userIngredients, dispatch] = useReducer(ingredientReducer, []);
+  // const [userIngredients, setUserIngredients] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
 
   useEffect(() => {
-    console.log("RENDERING INGREDIENTS", userIngredients);
+    console.log('RENDERING INGREDIENTS', userIngredients);
   }, [userIngredients]);
 
-  const filteredIngredientsHandler = useCallback((filteredIngredients) => {
-    setUserIngredients(filteredIngredients);
+  const filteredIngredientsHandler = useCallback(filteredIngredients => {
+    // setUserIngredients(filteredIngredients);
+    dispatch({ type: 'SET', ingredients: filteredIngredients });
   }, []);
 
-  const addIngredientHandler = (ingredient) => {
+  const addIngredientHandler = ingredient => {
     setIsLoading(true);
     fetch(
       "https://react-app-1cfa3-default-rtdb.asia-southeast1.firebasedatabase.app/ingredients.json",
       {
-        method: "POST",
-        body: JSON.stringify(ingredient),
-        headers: { "Content-Type": "application/json" },
-      }
-    )
-      .then((response) => {
+      method: 'POST',
+      body: JSON.stringify(ingredient),
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(response => {
         setIsLoading(false);
         return response.json();
       })
-      .then((responseData) => {
-        setUserIngredients((prevIngredients) => [
-          ...prevIngredients,
-          { id: responseData.name, ...ingredient },
-        ]);
+      .then(responseData => {
+        // setUserIngredients(prevIngredients => [
+        //   ...prevIngredients,
+        //   { id: responseData.name, ...ingredient }
+        // ]);
+        dispatch({
+          type: 'ADD',
+          ingredient: { id: responseData.name, ...ingredient }
+        });
       });
   };
 
-  const removeIngredientHandler = (ingredientId) => {
+  const removeIngredientHandler = ingredientId => {
     setIsLoading(true);
     fetch(
-      `https://react-app-1cfa3-default-rtdb.asia-southeast1.firebasedatabase.app/ingredients/${ingredientId}.jon`,
+      `https://react-app-1cfa3-default-rtdb.asia-southeast1.firebasedatabase.app/ingredients/${ingredientId}.json`,
       {
-        method: "DELETE",
+        method: 'DELETE'
       }
     )
-      .then((response) => {
+      .then(response => {
         setIsLoading(false);
-        const newIngredient = userIngredients.filter((obj) => {
-          return obj.id !== ingredientId;
-        });
-        setUserIngredients(newIngredient);
+        // setUserIngredients(prevIngredients =>
+        //   prevIngredients.filter(ingredient => ingredient.id !== ingredientId)
+        // );
+        dispatch({ type: 'DELETE', id: ingredientId });
       })
-      .catch((error) => {
-        // Error Handling
-        setError("Something went wrong");
+      .catch(error => {
+        setError('Something went wrong!');
         setIsLoading(false);
       });
   };
